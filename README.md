@@ -1,3 +1,4 @@
 # Retail Sales Analytics Lakehouse 
 
-Building an end-to-end Data Engineeering project using Microsofot Azure tools
+Tech stack: Azure Data Factory, ADLS, Databricks (PySpark, Delta), Synapse, Power BI
+
