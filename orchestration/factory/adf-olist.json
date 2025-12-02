@@ -1,0 +1,9 @@
+{
+	"name": "adf-olist",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "67da3e24-40fa-4586-b6f8-1f00086a27b8",
+		"tenantId": "41a36ac1-d3c8-4cb0-8e05-0fbff6c7d30f"
+	}
+}
