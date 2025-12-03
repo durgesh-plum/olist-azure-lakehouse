@@ -1,6 +1,83 @@
 {
 	"name": "pl_bronze_controller",
 	"properties": {
+		"activities": [
+			{
+				"name": "get_config",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_bronze_config",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "for_each_dataset",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "get_config",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('get_config').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "run_single_ingest",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_bronze_ingest",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"p_FileSystem": "@item().fileSystem\n",
+									"p_SourceDirectory": "@item().sourceDirectory\n",
+									"p_SourceFileName": "@item().sourceFileName\n",
+									"p_SinkDirectory": "@item().sinkDirectory\n",
+									"p_SinkFileName": "@item().sinkFileName\n"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
 		"annotations": []
 	}
 }
