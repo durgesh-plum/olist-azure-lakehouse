@@ -1,56 +1,56 @@
 [
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/customers",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_customers_dataset.csv",
     "sinkDirectory": "customers",
     "sinkFileName": "olist_customers_dataset.csv"
   },
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/orders",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_orders_dataset.csv",
     "sinkDirectory": "orders",
     "sinkFileName": "olist_orders_dataset.csv"
   },
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/order_items",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_order_items_dataset.csv",
     "sinkDirectory": "order_items",
     "sinkFileName": "olist_order_items_dataset.csv"
   },
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/order_reviews",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_order_reviews_dataset.csv",
     "sinkDirectory": "order_reviews",
     "sinkFileName": "olist_order_reviews_dataset.csv"
   },
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/products",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_products_dataset.csv",
     "sinkDirectory": "products",
     "sinkFileName": "olist_products_dataset.csv"
   },
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/sellers",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_sellers_dataset.csv",
     "sinkDirectory": "sellers",
     "sinkFileName": "olist_sellers_dataset.csv"
   },
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/geolocation",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_geolocation_dataset.csv",
     "sinkDirectory": "geolocation",
     "sinkFileName": "olist_geolocation_dataset.csv"
   },
   {
     "fileSystem": "olist",
-    "sourceDirectory": "bronze/payments",
+    "sourceDirectory": "datasets",
     "sourceFileName": "olist_order_payments_dataset.csv",
     "sinkDirectory": "payments",
     "sinkFileName": "olist_order_payments_dataset.csv"
