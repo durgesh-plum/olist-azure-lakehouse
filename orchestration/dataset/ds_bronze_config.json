@@ -1,0 +1,20 @@
+{
+	"name": "ds_bronze_config",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_olist",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "datasets.csv",
+				"folderPath": "config",
+				"fileSystem": "olist"
+			}
+		},
+		"schema": {}
+	}
+}
