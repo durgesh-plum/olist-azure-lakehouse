@@ -26,11 +26,11 @@
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "@dataset().Directory",
+					"value": "@concat('bronze/', dataset().Directory)\n",
 					"type": "Expression"
 				},
 				"fileSystem": {
-					"value": "bronze",
+					"value": "olist",
 					"type": "Expression"
 				}
 			},
