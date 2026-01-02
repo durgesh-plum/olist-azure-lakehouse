@@ -69,7 +69,7 @@
 							},
 							"FileName": "@pipeline().parameters.p_SinkFileName",
 							"p_RunDate": {
-								"value": "@concat('ingest_date=', formatDateTime(utcNow(), 'yyyy-MM-dd'))",
+								"value": "@utcnow()",
 								"type": "Expression"
 							}
 						}
