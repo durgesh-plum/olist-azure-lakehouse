@@ -28,7 +28,12 @@
 					},
 					"dataset": {
 						"referenceName": "ds_bronze_config",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSystem": "olist ",
+							"Directory": "config",
+							"FileName": "datasets.json"
+						}
 					},
 					"firstRowOnly": false
 				}
