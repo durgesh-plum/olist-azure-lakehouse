@@ -7,10 +7,12 @@
 		},
 		"parameters": {
 			"FileSystem": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "olist"
 			},
 			"Directory": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "bronze"
 			},
 			"FileName": {
 				"type": "string"
