@@ -14,6 +14,9 @@
 			},
 			"FileName": {
 				"type": "string"
+			},
+			"p_RunDate": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
