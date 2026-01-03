@@ -63,15 +63,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"FileSystem": {
-								"value": "olist",
+								"value": "@pipeline().parameters.p_FileSystem\n",
 								"type": "Expression"
 							},
 							"Directory": {
-								"value": "DEBUG\n",
+								"value": "@concat(\n  'bronze/',\n  pipeline().parameters.p_SinkDirectory,\n  '/ingest_date=',\n  formatDateTime(utcNow(),'yyyy-MM-dd')\n)\n",
 								"type": "Expression"
 							},
 							"FileName": {
-								"value": "DEBUG_TEST.csv",
+								"value": "@pipeline().parameters.p_SinkFileName\n",
 								"type": "Expression"
 							}
 						}
