@@ -52,8 +52,14 @@
 						"referenceName": "ds_bronze_source",
 						"type": "DatasetReference",
 						"parameters": {
-							"folderPath": "@pipeline().parameters.p_SourceDirectory",
-							"fileName": "@pipeline().parameters.p_SourceFileName"
+							"folderPath": {
+								"value": "datasets",
+								"type": "Expression"
+							},
+							"fileName": {
+								"value": "*.csv",
+								"type": "Expression"
+							}
 						}
 					}
 				],
