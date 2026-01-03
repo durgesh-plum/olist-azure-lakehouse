@@ -13,7 +13,11 @@
 		},
 		"ls_adls_olist_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://stolistlakehouse.dfs.core.windows.net"
+			"defaultValue": "https://stolistlakehousene.dfs.core.windows.net"
+		},
+		"ls_adls_olistne_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stolistlakehousene.dfs.core.windows.net/"
 		},
 		"ls_databricks_olist_properties_typeProperties_existingClusterId": {
 			"type": "string",
@@ -193,8 +197,9 @@
 								"referenceName": "ds_bronze_source",
 								"type": "DatasetReference",
 								"parameters": {
-									"folderPath": "@pipeline().parameters.p_SourceDirectory",
-									"fileName": "@pipeline().parameters.p_SourceFileName"
+									"FileSystem": "@pipeline().parameters.p_FileSystem",
+									"Directory": "@pipeline().parameters.p_SourceDirectory",
+									"FileName": "@pipeline().parameters.p_SourceFileName"
 								}
 							}
 						],
@@ -208,11 +213,11 @@
 										"type": "Expression"
 									},
 									"Directory": {
-										"value": "@concat(\n  'bronze/',\n  pipeline().parameters.p_SinkDirectory,\n  '/ingest_date=',\n  formatDateTime(utcNow(),'yyyy-MM-dd')\n)\n",
+										"value": "@concat(\n  'bronze/',\n  pipeline().parameters.p_SinkDirectory,\n  '/ingest_date=',\n  formatDateTime(utcNow(), 'yyyy-MM-dd')\n)\n",
 										"type": "Expression"
 									},
 									"FileName": {
-										"value": "@pipeline().parameters.p_SinkFileName\n",
+										"value": "@pipeline().parameters.p_SinkFileName",
 										"type": "Expression"
 									}
 								}
@@ -346,7 +351,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "ls_adls_olist",
+					"referenceName": "ls_adls_olistne",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
@@ -373,7 +378,7 @@
 				"schema": {}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_adls_olist')]"
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_olistne')]"
 			]
 		},
 		{
@@ -382,7 +387,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "ls_adls_olist",
+					"referenceName": "ls_adls_olistne",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
@@ -391,12 +396,10 @@
 						"defaultValue": "olist"
 					},
 					"Directory": {
-						"type": "string",
-						"defaultValue": "bronze"
+						"type": "string"
 					},
 					"FileName": {
-						"type": "string",
-						"defaultValue": "dummy.csv"
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -404,14 +407,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "DEBUG_TEST.csv",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@concat(dataset().Directory)",
-							"type": "Expression"
-						},
+						"fileName": "@dataset().FileName",
+						"folderPath": "@dataset().Directory",
 						"fileSystem": {
 							"value": "@dataset().FileSystem\n",
 							"type": "Expression"
@@ -425,7 +422,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_adls_olist')]"
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_olistne')]"
 			]
 		},
 		{
@@ -434,14 +431,17 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "ls_adls_olist",
+					"referenceName": "ls_adls_olistne",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"folderPath": {
+					"FileSystem": {
 						"type": "string"
 					},
-					"fileName": {
+					"Directory": {
+						"type": "string"
+					},
+					"FileName": {
 						"type": "string"
 					}
 				},
@@ -455,10 +455,10 @@
 							"type": "Expression"
 						},
 						"folderPath": {
-							"value": "@dataset().folderPath",
+							"value": "@dataset().directory",
 							"type": "Expression"
 						},
-						"fileSystem": "olist"
+						"fileSystem": "@dataset().fileSystem"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -468,7 +468,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_adls_olist')]"
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_olistne')]"
 			]
 		},
 		{
@@ -480,6 +480,19 @@
 				"type": "AzureBlobFS",
 				"typeProperties": {
 					"url": "[parameters('ls_adls_olist_properties_typeProperties_url')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_adls_olistne')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_adls_olistne_properties_typeProperties_url')]"
 				}
 			},
 			"dependsOn": []

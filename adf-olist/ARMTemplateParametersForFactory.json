@@ -9,7 +9,10 @@
 			"value": ""
 		},
 		"ls_adls_olist_properties_typeProperties_url": {
-			"value": "https://stolistlakehouse.dfs.core.windows.net"
+			"value": "https://stolistlakehousene.dfs.core.windows.net"
+		},
+		"ls_adls_olistne_properties_typeProperties_url": {
+			"value": "https://stolistlakehousene.dfs.core.windows.net/"
 		},
 		"ls_databricks_olist_properties_typeProperties_existingClusterId": {
 			"value": "1205-195430-mtytj2jr"

@@ -13,7 +13,11 @@
 		},
 		"ls_adls_olist_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://stolistlakehouse.dfs.core.windows.net"
+			"defaultValue": "https://stolistlakehousene.dfs.core.windows.net"
+		},
+		"ls_adls_olistne_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stolistlakehousene.dfs.core.windows.net/"
 		},
 		"ls_databricks_olist_properties_typeProperties_existingClusterId": {
 			"type": "string",
@@ -51,6 +55,9 @@
 					},
 					"ls_adls_olist_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_olist_properties_typeProperties_url')]"
+					},
+					"ls_adls_olistne_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_olistne_properties_typeProperties_url')]"
 					},
 					"ls_databricks_olist_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('ls_databricks_olist_properties_typeProperties_existingClusterId')]"
