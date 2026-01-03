@@ -73,7 +73,7 @@
 								"type": "Expression"
 							},
 							"Directory": {
-								"value": "@concat('bronze/', pipeline().parameters.p_SinkDirectory)",
+								"value": "@concat(\n  'bronze/',\n  pipeline().parameters.p_SinkDirectory,\n  '/ingest_date=',\n  formatDateTime(utcNow(), 'yyyy-MM-dd')\n)\n",
 								"type": "Expression"
 							},
 							"FileName": {
