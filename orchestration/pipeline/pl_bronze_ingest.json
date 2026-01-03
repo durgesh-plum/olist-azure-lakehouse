@@ -53,11 +53,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"folderPath": {
-								"value": "datasets",
+								"value": "@pipeline().parameters.p_SourceDirectory",
 								"type": "Expression"
 							},
 							"fileName": {
-								"value": "*.csv",
+								"value": "@pipeline().parameters.p_SourceFileName",
 								"type": "Expression"
 							}
 						}
@@ -73,7 +73,7 @@
 								"type": "Expression"
 							},
 							"Directory": {
-								"value": "@concat(\n  'bronze/',\n  pipeline().parameters.p_SinkDirectory,\n  '/ingest_date=',\n  formatDateTime(utcNow(),'yyyy-MM-dd')\n)\n",
+								"value": "@concat('bronze/', pipeline().parameters.p_SinkDirectory)",
 								"type": "Expression"
 							},
 							"FileName": {
