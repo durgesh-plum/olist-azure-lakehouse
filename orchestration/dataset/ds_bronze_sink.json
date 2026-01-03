@@ -7,7 +7,8 @@
 		},
 		"parameters": {
 			"FileSystem": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "olist"
 			},
 			"Directory": {
 				"type": "string"
@@ -21,16 +22,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().fileName",
-					"type": "Expression"
-				},
-				"folderPath": {
-					"value": "@dataset().directory",
-					"type": "Expression"
-				},
+				"fileName": "@dataset().FileName",
+				"folderPath": "@dataset().Directory",
 				"fileSystem": {
-					"value": "@dataset().fileSystem",
+					"value": "@dataset().FileSystem\n",
 					"type": "Expression"
 				}
 			},
