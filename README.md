@@ -70,6 +70,7 @@ Characteristics
 - No transformations
 
 ADLS Container Structure
+```text
 olist/
 └── bronze/
     ├── customers/
@@ -81,6 +82,7 @@ olist/
     ├── payments/
     ├── products/
     └── sellers/
+```
 
 ---
 🥈 Silver Layer – Cleansed & Conformed
