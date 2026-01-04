@@ -39,7 +39,7 @@ COUNTROWS (
 Distinct Customers = 
 CALCULATE(
     DISTINCTCOUNT(dim_customers[customer_id]),
-    fact_orders
+    fact_order_items
 )
 
 Revenue per Customer =
