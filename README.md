@@ -1,4 +1,4 @@
-# Olist Azure Lakehouse – End-to-End Data Engineering Project 
+# 📊 Olist Azure Lakehouse – End-to-End Data Engineering Project 
 
 🔹 Project Overview
 
@@ -9,7 +9,8 @@ The pipeline follows modern Bronze → Silver → Gold design principles and exp
 
 Goal: Build an industry-grade, scalable analytics pipeline using Azure-native services.
 
-#Technology Stack
+---
+🧰 Technology Stack
 
 | Layer            | Technology                             |
 | ---------------- | -------------------------------------- |
@@ -20,7 +21,7 @@ Goal: Build an industry-grade, scalable analytics pipeline using Azure-native se
 | BI & Reporting   | Power BI                               |
 | Dataset          | Olist Brazilian E-Commerce (Kaggle)    |
 
-
+---
 🏗️ Logical Architecture
 
 flowchart LR
@@ -31,6 +32,7 @@ flowchart LR
     E --> F[Databricks SQL Warehouse]
     F --> G[Power BI Dashboard]
 
+---
 📦 Dataset
 
 Source:
@@ -47,6 +49,7 @@ Key entities:
 - Reviews
 - Geolocation
 
+---
 🔄End-to-End Data Flow
 
 1. ADF orchestrates ingestion using a config-driven pipeline
@@ -61,6 +64,7 @@ Key entities:
   - Applies business rules and metrics
 5. Power BI connects via Databricks SQL Warehouse
 
+---
 🥉 Bronze Layer – Raw Ingestion
 
 Characteristics
@@ -82,6 +86,7 @@ olist/
     ├── products/
     └── sellers/
 
+---
 🥈 Silver Layer – Cleansed & Conformed
 
 Key Features
@@ -99,8 +104,8 @@ Example Responsibilities
 - One row per natural business key
 - Cleaned categorical values
 - Join-safe dimensions
-
-
+- 
+---
 🥇 Gold Layer – Dimensional Model
  
  Star Schema
@@ -122,6 +127,7 @@ Grain Validation
 - All foreign keys enforced
 - No null business keys allowed
 
+---
 ⏱️ Orchestration (ADF)
 
 Pipelines
@@ -136,6 +142,7 @@ Design Highlights
 
 Bronze → Silver Runner → Gold Runner Diagram
 
+---
 📊 Analytics & Power BI
 Connection
 
@@ -156,6 +163,7 @@ Dashboard KPIs
 - Product category performance
 - Geographic distribution
 
+---
 🧪 Data Quality & Validation
 
 Implemented across Silver & Gold:
@@ -166,7 +174,7 @@ Implemented across Silver & Gold:
 
 Pipelines fail fast on data quality violations.
 
-
+---
 ▶️ How to Run
 
 1. Upload dataset to ADLS (or use Kaggle source)
@@ -175,6 +183,7 @@ Pipelines fail fast on data quality violations.
 4. Execute Silver & Gold notebooks
 5. Refresh Power BI dataset
 
+---
 🧠 Key Design Decisions
 
 - MERGE instead of overwrite for Silver → idempotency
