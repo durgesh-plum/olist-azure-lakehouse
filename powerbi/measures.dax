@@ -1,0 +1,80 @@
+/* =========================
+   CORE ORDER METRICS
+   ========================= */
+
+Total Orders (Order-level) =
+DISTINCTCOUNT (
+    fact_orders[order_id]
+)
+
+Distinct OrderID =
+DISTINCTCOUNT (
+    fact_orders[order_id]
+)
+
+Orders (Item-Level) =
+DISTINCTCOUNT (
+    fact_order_items[order_id]
+)
+
+Orders with Items =
+DISTINCTCOUNT (
+    fact_order_items[order_id]
+)
+
+Fact Order Items =
+COUNTROWS (
+    fact_order_items
+)
+
+Total Items Sold =
+COUNTROWS (
+    fact_order_items
+)
+
+/* =========================
+   CUSTOMER METRICS
+   ========================= */
+
+Distinct Customers =
+CALCULATE (
+    DISTINCTCOUNT ( dim_customers[customer_id] ),
+    KEEPFILTERS ( dim_date )
+)
+
+Revenue per Customer =
+DIVIDE (
+    [Total Revenue],
+    [Distinct OrderID]
+)
+
+/* =========================
+   REVENUE METRICS
+   ========================= */
+
+Total Revenue =
+SUM (
+    fact_order_items[price]
+)
+
+Average Order Value =
+DIVIDE (
+    [Total Revenue],
+    [Total Orders (Order-level)]
+)
+
+/* =========================
+   TIME INTELLIGENCE
+   ========================= */
+
+Orders YoY =
+CALCULATE (
+    [Total Orders (Order-level)],
+    SAMEPERIODLASTYEAR ( dim_date[Date] )
+)
+
+Orders YoY % =
+DIVIDE (
+    [Total Orders (Order-level)] - [Orders YoY],
+    [Orders YoY]
+)
