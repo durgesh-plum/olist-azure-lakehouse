@@ -36,10 +36,10 @@ COUNTROWS (
    CUSTOMER METRICS
    ========================= */
 
-Distinct Customers =
-CALCULATE (
-    DISTINCTCOUNT ( dim_customers[customer_id] ),
-    KEEPFILTERS ( dim_date )
+Distinct Customers = 
+CALCULATE(
+    DISTINCTCOUNT(dim_customers[customer_id]),
+    fact_orders
 )
 
 Revenue per Customer =
