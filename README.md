@@ -74,6 +74,8 @@ ADLS Container Structure
 olist/
 └── bronze/
     ├── customers/
+        ├── ingest_date=2026-01-03/
+        └── ingest_date=2026-01-04/
     ├── geolocation/
     ├── order_items/
     ├── order_payments/
@@ -83,7 +85,7 @@ olist/
     ├── products/
     └── sellers/
 ```
-
+Each Bronze entity is partitioned by ingest_date to support reprocessing and auditability
 ---
 🥈 Silver Layer – Cleansed & Conformed
 
@@ -152,6 +154,9 @@ Power BI Model
 - Proper star schema
 - Single-direction filters
 - Measures layer separated
+
+
+The Power BI semantic model follows a strict star schema with single-direction filtering to ensure predictable aggregation behavior and optimal performance.
 
 Dashboard KPIs
 - Total Orders
