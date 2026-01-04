@@ -51,26 +51,25 @@ Key entities:
 1. ADF orchestrates ingestion using a config-driven pipeline
 2. Raw CSV files land in Bronze (ADLS Gen2)
 3. Databricks Silver:
-  - Enforces schemas
-  - Removes duplicates
-  - Adds metadata
-  - Uses Delta MERGE for idempotent updates
+   - Enforces schemas
+   - Removes duplicates
+   - Adds metadata
+   - Uses Delta MERGE for idempotent updates
 4. Databricks Gold:
-  - Builds star schema (facts & dimensions)
-  - Applies business rules and metrics
+   - Builds star schema (facts & dimensions)
+   - Applies business rules and metrics
 5. Power BI connects via Databricks SQL Warehouse
 
 ---
 🥉 Bronze Layer – Raw Ingestion
 
 Characteristics
-- Immutable raw data
-- CSV format
-- Partitioned by ingestion date
-- No transformations
+ - Immutable raw data
+ - CSV format
+ - Partitioned by ingestion date
+ - No transformations
 
 ADLS Container Structure
-Each Bronze entity is partitioned by ingest_date to support reprocessing and auditability
 ```text
 olist/
 └── bronze/
