@@ -102,7 +102,7 @@ Example Responsibilities
 - One row per natural business key
 - Cleaned categorical values
 - Join-safe dimensions
-- 
+  
 ---
 🥇 Gold Layer – Dimensional Model
  
