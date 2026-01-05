@@ -155,6 +155,7 @@ Power BI Model
 - Single-direction filters
 - Measures layer separated
 
+![PowerBI Model](powerbi/screenshots/powerbi_model.png)
 
 The Power BI semantic model follows a strict star schema with single-direction filtering to ensure predictable aggregation behavior and optimal performance.
 
